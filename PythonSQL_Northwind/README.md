@@ -13,7 +13,7 @@ This example showcases a data analysis project focused on the (extract) Northwin
 - **Data Source:** Northwind database
 - **Technologies Used:** SQLite, Pandas, Plotly
 - **Visual Output:** Bar chart displaying the revenue of the top 10 products.
-- **Interactive Chart:** [Top Products Chart](top_products_chart.html)
+- **Interactive Chart:** [Top Products Chart](https://sebacornnejo.github.io/top_products_chart.html)
 
 ### 2. Top 3 Employees by Total Orders
 
@@ -22,7 +22,7 @@ This example showcases a data analysis project focused on the (extract) Northwin
 - **Data Source:** Northwind database
 - **Technologies Used:** SQLite, Pandas, Plotly
 - **Visual Output:** Bar chart displaying the total orders for the top 3 employees.
-- **Interactive Chart:** [Top Employees Chart](top_employees_chart.html)
+- **Interactive Chart:** [Top Employees Chart](https://sebacornnejo.github.io/top_employees_chart.html)
 
 ### 3. Top 10 Employees by Revenue
 
@@ -31,7 +31,7 @@ This example showcases a data analysis project focused on the (extract) Northwin
 - **Data Source:** Northwind database
 - **Technologies Used:** SQLite, Pandas, Plotly
 - **Visual Output:** Bar chart displaying the revenue of the top 10 employees.
-- **Interactive Chart:** [Top Employees Revenue Chart](top_employeessales_chart.html)
+- **Interactive Chart:** [Top Employees Revenue Chart](https://sebacornnejo.github.io/top_employeessales_chart.html)
 
 ### 4. Northwind Dashboard
 
@@ -39,7 +39,7 @@ This example showcases a data analysis project focused on the (extract) Northwin
 - **Objective:** Integrate the three charts into an interactive dashboard.
 - **Technologies Used:** Plotly
 - **Visual Output:** Combined dashboard showcasing the top products, top employees, and top employees by revenue.
-- **Interactive Dashboard:** [Northwind Dashboard](northwind_dashboard.html)
+- **Interactive Dashboard:** [Northwind Dashboard](https://sebacornnejo.github.io/northwind_dashboard.html)
 
 ## How to Use
 

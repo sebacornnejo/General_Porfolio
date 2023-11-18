@@ -1,17 +1,7 @@
-# -----------------------------------------------------------------------------------------#
-# This script essentially develops simple visualizations from the Iris dataset using Plotly Express.
-# -----------------------------------------------------------------------------------------#
-
 # Import necessary libraries
 import plotly.express as px
 import plotly.graph_objects as go
-
-# -----------------------------------------------------------------------------------------#
-# The dark template plotly_dark is chosen for a professional look.
-# Colors #6331C5, #3F7AD8 and #12BF80 are used main for the charts.
-# The font family is set to Montserrat for consistency.
-# Each chart is saved as an interactive HTML file using Plotly for easy sharing.
-# -----------------------------------------------------------------------------------------#
+import statsmodels
 
 # Load the Iris dataset
 df = px.data.iris()
@@ -47,16 +37,9 @@ fig1.update_traces(marker=dict(size=12, line=dict(color="#F2F2F2", width=2)))
 fig1.show()
 
 # Save the interactive HTML chart
-# Uncomment the following line to save the interactive HTML chart:
 # fig1.write_html("./HTMLs/scatterplot_sepal.html")
 
 # -----------------------------------------------------------------------------------------#
-# Explanation:
-
-# The code generates a simple scatterplot from the Iris dataset, visualizing sepal width against sepal length.
-# The chart is styled with the Plotly dark template and displayed interactively.
-# -----------------------------------------------------------------------------------------#
-
 # Scatterplot with Color and Size
 fig2 = px.scatter(
     df,
@@ -79,6 +62,8 @@ fig2.update_traces(marker=dict(line=dict(color="#F2F2F2", width=1)))
 
 # Customize the layout
 fig2.update_layout(
+    # xaxis_title="Sepal Width",
+    # yaxis_title="Sepal Length",
     font_family="Montserrat",
     showlegend=True,
     legend_title="<b>Species:<b>",
@@ -89,17 +74,9 @@ fig2.update_layout(
 fig2.show()
 
 # Save the interactive HTML chart
-# Uncomment the following line to save the interactive HTML chart:
 # fig2.write_html("./HTMLs/scatterplot_species.html")
 
 # -----------------------------------------------------------------------------------------#
-# Explanation:
-
-# This section creates a scatterplot with color-coded points representing different species.
-# The size of the points is determined by petal length.
-# The chart is styled and displayed interactively.
-# -----------------------------------------------------------------------------------------#
-
 # 3D Scatterplot
 fig3 = px.scatter_3d(
     df,
@@ -120,7 +97,6 @@ fig3 = px.scatter_3d(
     color_discrete_sequence=["#6331C5", "#3F7AD8", "#12BF80"],
 )
 
-# Add borders to markers
 fig3.update_traces(marker=dict(line=dict(color="#F2F2F2", width=1)))
 
 # Customize the layout
@@ -135,21 +111,9 @@ fig3.update_layout(
 fig3.show()
 
 # Save the interactive HTML chart
-# Uncomment the following line to save the interactive HTML chart:
 # fig3.write_html("./HTMLs/scatterplot_3d.html")
 
 # -----------------------------------------------------------------------------------------#
-# Explanation:
-
-# The code utilizes Plotly Express to create a 3D scatterplot from the Iris dataset.
-# The scatterplot visualizes the relationships between sepal length, petal length, petal width, and sepal width, with points colored by species and sized by sepal width.
-# The title of the plot is set with specified font sizes.
-# Axes are labeled with descriptive names, and the color sequence is customized.
-# Markers have borders added for better visibility.
-# The layout is customized with the Montserrat font, legend settings, and a light background for the legend.
-# The final 3D scatterplot is displayed.
-# -----------------------------------------------------------------------------------------#
-
 # Scatter Matrix
 fig4 = px.scatter_matrix(
     df,
@@ -178,21 +142,12 @@ fig4.update_layout(
 
 fig4.show()
 
-# Save the interactive HTML chart
-# Uncomment the following line to save the interactive HTML chart:
+# # Save the interactive HTML chart
 # fig4.write_html("./HTMLs/scatter_matrix.html")
 
 # -----------------------------------------------------------------------------------------#
-# Explanation:
-
-# The scatter matrix displays pairwise relationships between sepal width, sepal length, petal width, and petal length, with points colored by species.
-# The title of the plot is set with specified font sizes.
-# Axes are labeled with descriptive names, and the color sequence is customized.
-# The layout is customized with the Montserrat font, legend settings, and a light background for the legend.
-# The final Scatter Matrix is displayed.
-# -----------------------------------------------------------------------------------------#
-
 # Boxplot
+
 fig5 = px.box(
     df,
     y="sepal_width",
@@ -202,7 +157,7 @@ fig5 = px.box(
     color_discrete_sequence=["#3F7AD8"],
 )
 
-# Update boxplot traces with customization
+
 fig5.update_traces(
     marker=dict(
         outliercolor="#3F7AD8",
@@ -219,7 +174,6 @@ fig5.update_layout(
     font_family="Montserrat",
 )
 
-# Add a scatter plot to show individual data points
 scatter_trace = go.Scatter(
     y=df["sepal_width"],
     mode="markers",
@@ -231,41 +185,31 @@ scatter_trace = go.Scatter(
 
 fig5.add_trace(scatter_trace)
 
-# Adjust x positions of scatter plot points and boxplot
+# Ajustar las posiciones x de los puntos del scatter plot y el boxplot
 fig5.update_traces(xaxis="x", x0=0, dx=0.2, selector=dict(type="box"))
 fig5.update_traces(xaxis="x", x0=-0.35, dx=0.0004, selector=dict(type="scatter"))
 
-# Hide x-axis tick labels
+# Ocultar los valores del eje x
 fig5.update_xaxes(showticklabels=False)
 
 fig5.show()
 
 # Save the interactive HTML chart
-# Uncomment the following line to save the interactive HTML chart:
 # fig5.write_html("./HTMLs/boxplot_sepal_width.html")
 
 # -----------------------------------------------------------------------------------------#
-# Explanation:
-
-# The title of the plot is set with specified font sizes.
-# Boxplot customization includes marker settings, line colors, and fill colors.
-# A scatter plot is added to show individual data points.
-# The x positions of scatter plot points and boxplot are adjusted for better visual alignment.
-# X-axis tick labels are hidden for cleaner presentation.
-# The final Boxplot with Scatter Plot is displayed.
-# -----------------------------------------------------------------------------------------#
-
 # Boxplot Comparison
 # Lista de colores de relleno para los boxplots
 fill_colors = ["#6331C5", "#3F7AD8", "#12BF80"]
 
-# Create a list of Box traces with custom colors
+# Crear una lista de Box traces con colores personalizados
 box_traces = []
 for i in range(len(fill_colors)):
     box_trace = go.Box(
         x=df[df["species"] == df["species"].unique()[i]]["species"],
         y=df[df["species"] == df["species"].unique()[i]]["sepal_width"],
         name=df["species"].unique()[i],
+        # marker=dict(color=fill_colors[i], outliercolor=line_colors[i], line=dict(color=line_colors[i])),
         marker=dict(
             color=fill_colors[i],
             line=dict(color=fill_colors[i]),
@@ -276,10 +220,10 @@ for i in range(len(fill_colors)):
     )
     box_traces.append(box_trace)
 
-# Create the figure and add the custom boxplots
+# Crear la figura y agregar los boxplots personalizados
 fig6 = go.Figure(box_traces)
 
-# Additional configurations
+# Configuraciones adicionales
 fig6.update_layout(
     title='<b style="font-size:24px>A Simple Boxplot Comparison</b><br><span style="font-size:14px;">from Iris Dataset</span>',
     xaxis=dict(title="Species"),
@@ -292,24 +236,14 @@ fig6.update_layout(
     template="plotly_dark",
 )
 
-# Display the figure
+# Mostrar la figura
 fig6.show()
 
 # Save the interactive HTML chart
-# Uncomment the following line to save the interactive HTML chart:
 # fig6.write_html("./HTMLs/boxplot_species_comparison.html")
 
 # -----------------------------------------------------------------------------------------#
-# Explanation:
-
-# The code creates a Boxplot Comparison using Plotly with multiple boxplots for sepal width categorized by species from the Iris dataset.
-# A list of fill colors is defined for each boxplot.
-# Custom Box traces are created for each species with specified colors and other visual settings.
-# The figure is generated by combining the custom boxplots.
-# -----------------------------------------------------------------------------------------#
-
 # Histogram
-# The numpy library is additionally imported
 import numpy as np
 
 # Calculate percentage bins from histogram using numpy
@@ -318,7 +252,6 @@ bin = 13
 hist, bin_edges = np.histogram(df["sepal_width"], bins=bin, density=False)
 hist_percent = (hist / len(df)) * 100
 
-# Create a Histogram using Plotly Express
 fig7 = px.histogram(
     df,
     x="sepal_width",
@@ -329,7 +262,6 @@ fig7 = px.histogram(
     color_discrete_sequence=["#6331C5"],
 )
 
-# Update histogram traces with customization
 fig7.update_traces(
     marker=dict(line=dict(color="#F2F2F2", width=0.5)),
     hovertemplate="Bin: %{x}<br>Count: %{y}<br>Percent: %{customdata:.2f}%",
@@ -339,7 +271,7 @@ fig7.update_traces(
 # Customize the layout
 fig7.update_layout(font_family="Montserrat")
 
-# Add lines for mean, median, and standard deviation via go.Scatter
+# Agrega líneas para promedio, mediana y desviación estándar
 fig7.add_trace(
     go.Scatter(
         x=[
@@ -400,25 +332,14 @@ fig7.add_trace(
     )
 )
 
-# Remove y-axis title for better presentation
 fig7.update_yaxes(title_text="")
 
 fig7.show()
 
 # Save the interactive HTML chart
-# Uncomment the following line to save the interactive HTML chart:
 # fig7.write_html("./HTMLs/histogram_sepal_width.html")
 
 # -----------------------------------------------------------------------------------------#
-# Explanation:
-
-# The code calculates a histogram with percentage bins from the "sepal_width" column of the Iris dataset using NumPy.
-# A Histogram is created using Plotly Express with specified parameters, including title, labels, and template.
-# Histogram traces are customized for better visualization, and hover information includes bin, count, and percentage.
-# Additional traces are added for mean, median, and standard deviation lines.
-# The final Histogram with Mean, Median, and Standard Deviation lines is displayed.
-# -----------------------------------------------------------------------------------------#
-
 # Multiple Histograms
 fig8 = px.histogram(
     df,
@@ -431,7 +352,6 @@ fig8 = px.histogram(
     color_discrete_sequence=["#6331C5", "#3F7AD8", "#12BF80"],
 )
 
-# Update histogram traces with customization
 fig8.update_traces(
     marker=dict(line=dict(color="#F2F2F2", width=0.5)),
     hovertemplate="Bin: %{x}<br>Count: %{y}",
@@ -451,23 +371,12 @@ fig8.update_layout(
 fig8.show()
 
 # Save the interactive HTML chart
-# Uncomment the following line to save the interactive HTML chart:
 # fig8.write_html("./HTMLs/histogram_species_overlay.html")
 
 # -----------------------------------------------------------------------------------------#
-# Explanation:
-
-# The code creates a Multiple Histogram using Plotly Express with different colors for each species.
-# The x-axis represents sepal width, and the data is grouped by the "species" column.
-# Customizations include title, labels, template, color sequence, and hover information.
-# The final Multiple Histograms are displayed, showing the distribution of sepal width for each species.
-# -----------------------------------------------------------------------------------------#
-
 # Histogram for General Counting
-# The screeninfo library is additionally imported
 import screeninfo
 
-# Define a color palette for the histogram
 color_palette_cpt = [
     "#EAF759",
     "#F1E44F",
@@ -495,10 +404,8 @@ color_palette_cpt = [
     "#042333",
 ]
 
-# Sort the DataFrame by sepal width in descending order
 df_sorted = df.sort_values(by="sepal_width", ascending=False)
 
-# Create a Histogram for General Counting using Plotly Express
 fig9 = px.histogram(
     df_sorted,
     x="species",
@@ -527,32 +434,21 @@ fig9.update_layout(
     legend_font_color="#262626",
 )
 
-# Update hover template
 fig9.update_traces(hovertemplate="<b>Percent</b>: %{y:.2f}%")
 
 fig9.show()
 
 # Save the interactive HTML chart
-# Uncomment the following line to save the interactive HTML chart:
-# fig9.write_html("./HTMLs/histogram_general_count.html")
+fig9.write_html("./HTMLs/histogram_general_count.html")
 
 # -----------------------------------------------------------------------------------------#
-# Explanation:
-
-# The code creates a Histogram for General Counting using Plotly Express with sepal width colored by species.
-# The DataFrame is sorted by sepal width in descending order.
-# Customizations include title, labels, template, color palette, and histogram normalization to percent.
-# The layout is customized with screen dimensions.
-# The final Histogram for General Counting is displayed, showing the distribution of sepal width across species.
-# -----------------------------------------------------------------------------------------#
-
 # Scatterplot with Regression Lines
 fig10 = px.scatter(
     df,
     x="sepal_width",
     y="sepal_length",
     color="species",
-    trendline="ols", # Adding Ordinary Least Squares (OLS) regression lines
+    trendline="ols",
     title='<b style="font-size:24px>A Simple Scatterplot with Regression Lines</b><br><span style="font-size:14px;">from Iris Dataset</span>',
     labels={
         "sepal_width": "Sepal Width",
@@ -563,9 +459,7 @@ fig10 = px.scatter(
     color_discrete_sequence=["#6331C5", "#3F7AD8", "#12BF80"],
 )
 
-# Update scatterplot traces with customization
 fig10.update_traces(marker=dict(size=10, line=dict(color="#F2F2F2", width=0.5)))
-
 # Customize the layout
 fig10.update_layout(
     font_family="Montserrat",
@@ -577,27 +471,19 @@ fig10.update_layout(
 
 fig10.show()
 
-# Save the interactive HTML chart
-# Uncomment the following line to save the interactive HTML chart:
+# # Save the interactive HTML chart
 # fig10.write_html("./HTMLs/scatterplot_regression.html")
 
 # -----------------------------------------------------------------------------------------#
-# Explanation:
-
-# The code creates a Scatterplot with Regression Lines using Plotly Express with sepal width on the x-axis, sepal length on the y-axis, and color-coded by species.
-# Regression lines are added using Ordinary Least Squares (OLS) method.
-# The final Scatterplot with Regression Lines is displayed, showing the relationship between sepal width and sepal length with regression lines for each species.
-# -----------------------------------------------------------------------------------------#
-
 # Scatterplot with Marginal Plots
 fig11 = px.scatter(
     df,
     x="sepal_width",
     y="sepal_length",
     color="species",
-    marginal_y="box", # Add marginal boxplots on the y-axis
-    marginal_x="box", # Add marginal boxplots on the x-axis
-    trendline="ols", # Adding Ordinary Least Squares (OLS) regression lines
+    marginal_y="box",
+    marginal_x="box",
+    trendline="ols",
     title='<b style="font-size:24px>A Simple Scatterplot with Margin Plots</b><br><span style="font-size:14px;">from Iris Dataset</span>',
     labels={
         "sepal_width": "Sepal Width",
@@ -608,9 +494,8 @@ fig11 = px.scatter(
     color_discrete_sequence=["#6331C5", "#3F7AD8", "#12BF80"],
 )
 
-# Update scatterplot traces with customization
+# Customize the layout
 fig11.update_traces(marker=dict(size=10, line=dict(color="#F2F2F2", width=0.5)))
-
 # Customize the layout
 fig11.update_layout(
     font_family="Montserrat",
@@ -620,7 +505,7 @@ fig11.update_layout(
     legend_font_color="#262626",
 )
 
-# Customize the color of the fill for the marginal boxplots
+# Personalizar el color del relleno de los boxplots marginales
 fill_colors = ["#6331C5", "#3F7AD8", "#12BF80"]
 for i, species in enumerate(df["species"].unique()):
     fig11.update_traces(
@@ -633,16 +518,45 @@ for i, species in enumerate(df["species"].unique()):
 fig11.show()
 
 # Save the interactive HTML chart
-# Uncomment the following line to save the interactive HTML chart:
 # fig11.write_html("./HTMLs/scatterplot_marginal_plots.html")
 
 # -----------------------------------------------------------------------------------------#
-# Explanation:
+# Create a Dashboard with make_subplots
+# from plotly.subplots import make_subplots
+# import screeninfo
 
-# The code creates a Scatterplot with Marginal Boxplots using Plotly Express.
-# The main scatterplot is created with sepal width on the x-axis, sepal length on the y-axis, and color-coded by species.
-# Marginal boxplots are added on both the x-axis and y-axis to show the distribution of individual variables.
-# Regression lines are added using Ordinary Least Squares (OLS) method.
-# Contour lines of marginal boxplots are change and filled with custom colors corresponding to each species.
-# The final Scatterplot with Marginal Plots is displayed, providing a comprehensive view of the data distribution.
-# -----------------------------------------------------------------------------------------#
+# fig14 = make_subplots(rows=4, cols=4, subplot_titles=['Sepal Width vs Sepal Length', 'Sepal Width vs Sepal Length with Species and Petal Length',
+#                                                       '3D Scatterplot of Sepal and Petal Dimensions', 'Scatter Matrix of Sepal and Petal Dimensions',
+#                                                       'Boxplot of Sepal Width', 'Boxplot Comparison of Sepal Width by Species', 'Histogram of Sepal Width',
+#                                                       'Overlayed Histograms of Sepal Width by Species', 'Histogram Chart for General Counting',
+#                                                       'Bar Chart of Species', 'Bar Chart of Sepal Length by Species', 'Scatterplot with Regression Lines',
+#                                                       'Scatterplot with Marginal Plots'])
+
+# # Add traces to the subplots
+# fig14.add_trace(fig1['data'][0], row=1, col=1)
+# fig14.add_trace(fig2['data'][0], row=1, col=2)
+# fig14.add_trace(fig4['data'][0], row=1, col=3)
+# fig14.add_trace(fig5['data'][0], row=2, col=4)
+# fig14.add_trace(fig6['data'][0], row=2, col=1)
+# fig14.add_trace(fig7['data'][0], row=2, col=2)
+# fig14.add_trace(fig8['data'][0], row=2, col=3)
+# fig14.add_trace(fig9['data'][0], row=3, col=4)
+# fig14.add_trace(fig10['data'][0], row=3, col=1)
+# fig14.add_trace(fig11['data'][0], row=3, col=2)
+# fig14.add_trace(fig12['data'][0], row=3, col=3)
+# fig14.add_trace(fig13['data'][0], row=4, col=4)
+
+# # Get screen resolution
+# screen_info = screeninfo.get_monitors()
+# screen_width = screen_info[0].width
+# screen_height = screen_info[0].height
+
+# # Update layout
+# fig14.update_layout(height=screen_height, width=screen_width, showlegend=False, title_text='<b style="font-size:24px">Iris Dataset Dashboard</b>',
+#                     font_family="Montserrat", template='plotly_dark')
+
+# # Save the interactive HTML dashboard
+# fig14.write_html("iris_dataset_dashboard.html")
+
+# # Display the dashboard
+# fig14.show()

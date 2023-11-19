@@ -10,7 +10,7 @@ import plotly.graph_objects as go
 # The dark template plotly_dark is chosen for a professional look.
 # Colors #6331C5, #3F7AD8 and #12BF80 are used main for the charts.
 # The font family is set to Montserrat for consistency.
-# Each chart is saved as an interactive HTML file using Plotly for easy sharing.
+# Each chart is saved as an interactive HTML file using Plotly for easy sharing and embedding into dashboards.
 # -----------------------------------------------------------------------------------------#
 
 # Load the Iris dataset
@@ -44,7 +44,8 @@ fig1.update_layout(
 # Adjust point size fixedly
 fig1.update_traces(marker=dict(size=12, line=dict(color="#F2F2F2", width=2)))
 
-fig1.show()
+# Uncomment the following line to display the interactive HTML chart:
+# fig1.show()
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
@@ -86,7 +87,8 @@ fig2.update_layout(
     legend_font_color="#262626",
 )
 
-fig2.show()
+# Uncomment the following line to display the interactive HTML chart:
+# fig2.show()
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
@@ -132,7 +134,8 @@ fig3.update_layout(
     legend_font_color="#262626",
 )
 
-fig3.show()
+# Uncomment the following line to display the interactive HTML chart:
+# fig3.show()
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
@@ -176,7 +179,8 @@ fig4.update_layout(
     legend_font_color="#262626",
 )
 
-fig4.show()
+# Uncomment the following line to display the interactive HTML chart:
+# fig4.show()
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
@@ -238,7 +242,8 @@ fig5.update_traces(xaxis="x", x0=-0.35, dx=0.0004, selector=dict(type="scatter")
 # Hide x-axis tick labels
 fig5.update_xaxes(showticklabels=False)
 
-fig5.show()
+# Uncomment the following line to display the interactive HTML chart:
+# fig5.show()
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
@@ -292,8 +297,8 @@ fig6.update_layout(
     template="plotly_dark",
 )
 
-# Display the figure
-fig6.show()
+# Uncomment the following line to display the interactive HTML chart:
+# fig6.show()
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
@@ -403,7 +408,8 @@ fig7.add_trace(
 # Remove y-axis title for better presentation
 fig7.update_yaxes(title_text="")
 
-fig7.show()
+# Uncomment the following line to display the interactive HTML chart:
+# fig7.show()
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
@@ -448,7 +454,8 @@ fig8.update_layout(
     legend_font_color="#262626",
 )
 
-fig8.show()
+# Uncomment the following line to display the interactive HTML chart:
+# fig8.show()
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
@@ -467,7 +474,9 @@ fig8.show()
 # The screeninfo library is additionally imported
 import screeninfo
 
-# Define a color palette for the histogram
+# Define a color palette for the histogram, these are extracted from thermal.cpt (http://soliton.vm.bytemark.co.uk/pub/cpt-city/cmocean/tn/thermal.png.index.html) and transformed to hex format with matlab,
+# - colormap_cpt.m: http://soliton.vm.bytemark.co.uk/pub/cpt-city/notes/colormap_cpt.m
+# - rgb2hex.m: https://www.mathworks.com/matlabcentral/fileexchange/46289-rgb2hex-and-hex2rgb
 color_palette_cpt = [
     "#EAF759",
     "#F1E44F",
@@ -530,7 +539,8 @@ fig9.update_layout(
 # Update hover template
 fig9.update_traces(hovertemplate="<b>Percent</b>: %{y:.2f}%")
 
-fig9.show()
+# Uncomment the following line to display the interactive HTML chart:
+# fig9.show()
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
@@ -552,7 +562,7 @@ fig10 = px.scatter(
     x="sepal_width",
     y="sepal_length",
     color="species",
-    trendline="ols", # Adding Ordinary Least Squares (OLS) regression lines
+    trendline="ols",  # Adding Ordinary Least Squares (OLS) regression lines
     title='<b style="font-size:24px>A Simple Scatterplot with Regression Lines</b><br><span style="font-size:14px;">from Iris Dataset</span>',
     labels={
         "sepal_width": "Sepal Width",
@@ -575,7 +585,8 @@ fig10.update_layout(
     legend_font_color="#262626",
 )
 
-fig10.show()
+# Uncomment the following line to display the interactive HTML chart:
+# fig10.show()
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
@@ -595,9 +606,9 @@ fig11 = px.scatter(
     x="sepal_width",
     y="sepal_length",
     color="species",
-    marginal_y="box", # Add marginal boxplots on the y-axis
-    marginal_x="box", # Add marginal boxplots on the x-axis
-    trendline="ols", # Adding Ordinary Least Squares (OLS) regression lines
+    marginal_y="box",  # Add marginal boxplots on the y-axis
+    marginal_x="box",  # Add marginal boxplots on the x-axis
+    trendline="ols",  # Adding Ordinary Least Squares (OLS) regression lines
     title='<b style="font-size:24px>A Simple Scatterplot with Margin Plots</b><br><span style="font-size:14px;">from Iris Dataset</span>',
     labels={
         "sepal_width": "Sepal Width",
@@ -630,7 +641,8 @@ for i, species in enumerate(df["species"].unique()):
         selector=dict(type="box", name=species),
     )
 
-fig11.show()
+# Uncomment the following line to display the interactive HTML chart:
+# fig11.show()
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
@@ -645,4 +657,180 @@ fig11.show()
 # Regression lines are added using Ordinary Least Squares (OLS) method.
 # Contour lines of marginal boxplots are change and filled with custom colors corresponding to each species.
 # The final Scatterplot with Marginal Plots is displayed, providing a comprehensive view of the data distribution.
+# -----------------------------------------------------------------------------------------#
+
+
+# -----------------------------------------------------------------------------------------#
+# Below is a basic example of how you can integrate the charts into a dashboard:
+# (Alternative graphics included for fig2 and fig6)
+# -----------------------------------------------------------------------------------------#
+
+
+# -----------------------------------------------------------------------------------------#
+# Alternative to Scatterplot with Color and Size of Fig2
+fig2a = px.scatter(
+    df,
+    x="petal_length",
+    y="petal_width",
+    color="species",
+    size="sepal_width",
+    title='<b style="font-size:24px>A Simple Scatterplot with Color and Size</b><br><span style="font-size:14px;">from Iris Dataset</span>',
+    labels={
+        "sepal_width": "Sepal Width",
+        "petal_width": "Petal Width",
+        "petal_length": "Petal Length",
+        "species": "Species",
+    },
+    template="plotly_dark",
+    color_discrete_sequence=["#6331C5", "#3F7AD8", "#12BF80"],
+)
+
+fig2a.update_traces(marker=dict(line=dict(color="#F2F2F2", width=1)))
+
+# Customize the layout
+fig2a.update_layout(
+    font_family="Montserrat",
+    showlegend=True,
+    legend_title="<b>Species:<b>",
+    legend=dict(x=0.74, y=0.08, bgcolor="rgba(255, 255, 255, 0.5)", orientation="h"),
+    legend_font_color="#262626",
+)
+
+# Uncomment the following line to display the interactive HTML chart:
+# fig2a.show()
+
+# -----------------------------------------------------------------------------------------#
+# Alternative to Boxplot Comparison of Fig6
+fig6a = px.box(
+    df,
+    x="species",
+    y="sepal_width",
+    color="species",
+    points="all",
+    title='<b style="font-size:24px>A Simple Boxplot Comparison</b><br><span style="font-size:14px;">from Iris Dataset</span>',
+    labels={"sepal_width": "Sepal Width", "species": "Species"},
+    template="plotly_dark",
+    color_discrete_sequence=["#6331C5", "#3F7AD8", "#12BF80"],
+)
+
+fig6a.update_traces(
+    marker=dict(color="#12BF80"),  # Color de relleno
+    line=dict(color="#F2F2F2"),  # Color de línea de contorno
+)
+
+# Customize the layout
+fig6a.update_layout(
+    font_family="Montserrat",
+    showlegend=True,
+    legend_title="<b>Species:<b>",
+    legend=dict(x=0.74, y=0.96, bgcolor="rgba(255, 255, 255, 0.5)", orientation="h"),
+    legend_font_color="#262626",
+)
+
+# Uncomment the following line to display the interactive HTML chart:
+# fig6a.show()
+
+# -----------------------------------------------------------------------------------------#
+# Create a Dashboard with make_subplots
+from plotly.subplots import make_subplots
+
+# Define the layout of the subplots
+fig12 = make_subplots(
+    rows=5,
+    cols=2,
+    subplot_titles=[
+        "A Simple Scatterplot",
+        "A Simple Scatterplot with Color and Size",
+        "Another Simple Scatterplot with Color and Size",
+        "A Simple Boxplot",
+        "A Simple Boxplot Comparison",
+        "Another Simple Boxplot Comparison",
+        "A Simple Histogram",
+        "A Simple Multiple Histogram",
+        "A Simple Histogram Chart for General Percentage<br>&#x25ba; Sepal Width",
+        "A Simple Scatterplot with Regression Lines",
+    ],
+    horizontal_spacing=0.035,
+    vertical_spacing=0.025,
+)
+
+# Add traces to the subplots by iterating over individual figures
+for trace in fig1["data"]:
+    fig12.add_trace(trace, row=1, col=1)
+for trace in fig2["data"]:
+    fig12.add_trace(trace, row=1, col=2)
+for trace in fig2a["data"]:
+    fig12.add_trace(trace, row=2, col=1)
+for trace in fig5["data"]:
+    fig12.add_trace(trace, row=2, col=2)
+for trace in fig6["data"]:
+    trace['legendgroup'] = trace['name']
+    fig12.add_trace(trace, row=3, col=1)
+for trace in fig6a["data"]:
+    fig12.add_trace(trace, row=3, col=2)
+for trace in fig7["data"]:
+    fig12.add_trace(trace, row=4, col=1)
+for trace in fig8["data"]:
+    fig12.add_trace(trace, row=4, col=2)
+for trace in fig9["data"]:
+    fig12.add_trace(trace, row=5, col=1)
+for trace in fig10["data"]:
+    fig12.add_trace(trace, row=5, col=2)
+
+# Copy x- and y-axis titles from individual figures to subplots
+fig12.update_xaxes(title=fig1.layout.xaxis.title, row=1, col=1)
+fig12.update_xaxes(title=fig2.layout.xaxis.title, row=1, col=2)
+fig12.update_xaxes(title=fig2a.layout.xaxis.title, row=2, col=1)
+fig12.update_xaxes(showticklabels=False, row=2, col=2)
+fig12.update_xaxes(title=fig6.layout.xaxis.title, row=3, col=1)
+fig12.update_xaxes(title=fig6a.layout.xaxis.title, row=3, col=2)
+fig12.update_xaxes(title=fig7.layout.xaxis.title, row=4, col=1)
+fig12.update_xaxes(title=fig8.layout.xaxis.title, row=4, col=2)
+fig12.update_xaxes(title=fig9.layout.xaxis.title, row=5, col=1)
+fig12.update_xaxes(title=fig10.layout.xaxis.title, row=5, col=2)
+
+fig12.update_yaxes(title=fig1.layout.yaxis.title, row=1, col=1)
+fig12.update_yaxes(title=fig2.layout.yaxis.title, row=1, col=2)
+fig12.update_yaxes(title=fig2a.layout.yaxis.title, row=2, col=1)
+fig12.update_yaxes(title=fig5.layout.yaxis.title, row=2, col=2)
+fig12.update_yaxes(title=fig6.layout.yaxis.title, row=3, col=1)
+fig12.update_yaxes(title=fig6a.layout.yaxis.title, row=3, col=2)
+fig12.update_yaxes(title=fig7.layout.yaxis.title, row=4, col=1)
+fig12.update_yaxes(title=fig8.layout.yaxis.title, row=4, col=2)
+fig12.update_yaxes(title=fig9.layout.yaxis.title, row=5, col=1)
+fig12.update_yaxes(title=fig10.layout.yaxis.title, row=5, col=2)
+
+# Get screen resolution
+screen_info = screeninfo.get_monitors()
+screen_width = screen_info[0].width
+screen_height = screen_info[0].height
+
+# Update layout settings for the dashboard
+fig12.update_layout(
+    height=screen_height * 5,
+    width=screen_width * 2,
+    # showlegend=False,
+    # legend_title="<b>General Legend:<b><br>",
+    legend=dict(y=0.5, bgcolor="rgba(255, 255, 255, 0.5)"),
+    legend_font_color="#262626",
+    title_text='<b style="font-size:24px">A Simple Iris Dataset Dashboard</b>',
+    font_family="Montserrat",
+    template="plotly_dark",
+)
+
+# Display the dashboard
+fig12.show()
+
+# Save the interactive HTML dashboard
+fig12.write_html("./HTMLs/big_iris_dataset_dashboard.html")
+
+# -----------------------------------------------------------------------------------------#
+# Explanation:
+
+# The code uses Plotly's make_subplots to create a 5x2 grid for subplots.
+# Each subplot corresponds to a different chart from previous examples.
+# Individual traces from existing figures (fig1, fig2, etc.) are added to the respective subplots.
+# X- and y-axis titles are copied from individual figures to the corresponding subplots.
+# The layout is updated with screen resolution, legend settings, title, font family, and a dark template.
+# The resulting dashboard is displayed and saved as an interactive HTML file.
 # -----------------------------------------------------------------------------------------#

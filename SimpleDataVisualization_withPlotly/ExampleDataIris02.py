@@ -28,16 +28,13 @@ fig1 = px.scatter(
 
 # Customize the layout
 fig1.update_layout(
-    xaxis_title="Sepal Width", yaxis_title="Sepal Length", font_family="Montserrat"
+    xaxis_title="Sepal Width",
+    yaxis_title="Sepal Length",
+    font_family="Montserrat",
 )
 
 # Adjust point size fixedly
 fig1.update_traces(marker=dict(size=12, line=dict(color="#F2F2F2", width=2)))
-
-fig1.show()
-
-# Save the interactive HTML chart
-# fig1.write_html("./HTMLs/scatterplot_sepal.html")
 
 # -----------------------------------------------------------------------------------------#
 # Scatterplot with Color and Size
@@ -58,12 +55,12 @@ fig2 = px.scatter(
     color_discrete_sequence=["#6331C5", "#3F7AD8", "#12BF80"],
 )
 
-fig2.update_traces(marker=dict(line=dict(color="#F2F2F2", width=1)))
+fig2.update_traces(
+    marker=dict(line=dict(color="#F2F2F2", width=1))
+)
 
 # Customize the layout
 fig2.update_layout(
-    # xaxis_title="Sepal Width",
-    # yaxis_title="Sepal Length",
     font_family="Montserrat",
     showlegend=True,
     legend_title="<b>Species:<b>",
@@ -71,27 +68,20 @@ fig2.update_layout(
     legend_font_color="#262626",
 )
 
-fig2.show()
-
-# Save the interactive HTML chart
-# fig2.write_html("./HTMLs/scatterplot_species.html")
-
 # -----------------------------------------------------------------------------------------#
-# 3D Scatterplot
-fig3 = px.scatter_3d(
+# Similar to Scatterplot with Color and Size of Fig2
+fig3 = px.scatter(
     df,
-    x="sepal_length",
-    y="petal_length",
-    z="petal_width",
+    x="petal_length",
+    y="petal_width",
     color="species",
     size="sepal_width",
-    title='<b style="font-size:24px>A Simple 3D Scatterplot</b><br><span style="font-size:14px;">from Iris Dataset</span>',
+    title='<b style="font-size:24px>A Simple Scatterplot with Color and Size</b><br><span style="font-size:14px;">from Iris Dataset</span>',
     labels={
-        "sepal_length": "Sepal Length",
-        "petal_length": "Petal Length",
-        "petal_width": "Petal Width",
-        "species": "Species",
         "sepal_width": "Sepal Width",
+        "petal_width": "Petal Width",
+        "petal_length": "Petal Length",
+        "species": "Species",
     },
     template="plotly_dark",
     color_discrete_sequence=["#6331C5", "#3F7AD8", "#12BF80"],
@@ -108,47 +98,11 @@ fig3.update_layout(
     legend_font_color="#262626",
 )
 
-fig3.show()
-
-# Save the interactive HTML chart
-# fig3.write_html("./HTMLs/scatterplot_3d.html")
-
-# -----------------------------------------------------------------------------------------#
-# Scatter Matrix
-fig4 = px.scatter_matrix(
-    df,
-    dimensions=["sepal_width", "sepal_length", "petal_width", "petal_length"],
-    color="species",
-    title='<b style="font-size:24px>A Simple Scatter Matrix</b><br><span style="font-size:14px;">from Iris Dataset</span>',
-    labels={
-        "sepal_length": "Sepal Length",
-        "petal_length": "Petal Length",
-        "petal_width": "Petal Width",
-        "species": "Species",
-        "sepal_width": "Sepal Width",
-    },
-    template="plotly_dark",
-    color_discrete_sequence=["#6331C5", "#3F7AD8", "#12BF80"],
-)
-
-# Customize the layout
-fig4.update_layout(
-    font_family="Montserrat",
-    showlegend=True,
-    legend_title="<b>Species:<b>",
-    legend=dict(x=0.74, y=1.07, bgcolor="rgba(255, 255, 255, 0.5)", orientation="h"),
-    legend_font_color="#262626",
-)
-
-fig4.show()
-
-# # Save the interactive HTML chart
-# fig4.write_html("./HTMLs/scatter_matrix.html")
 
 # -----------------------------------------------------------------------------------------#
 # Boxplot
 
-fig5 = px.box(
+fig4 = px.box(
     df,
     y="sepal_width",
     title='<b style="font-size:24px>A Simple Boxplot</b><br><span style="font-size:14px;">from Iris Dataset</span>',
@@ -158,7 +112,7 @@ fig5 = px.box(
 )
 
 
-fig5.update_traces(
+fig4.update_traces(
     marker=dict(
         outliercolor="#3F7AD8",
         size=9,
@@ -170,7 +124,7 @@ fig5.update_traces(
 )
 
 # Customize the layout
-fig5.update_layout(
+fig4.update_layout(
     font_family="Montserrat",
 )
 
@@ -183,21 +137,17 @@ scatter_trace = go.Scatter(
     showlegend=False,
 )
 
-fig5.add_trace(scatter_trace)
+fig4.add_trace(scatter_trace)
 
 # Ajustar las posiciones x de los puntos del scatter plot y el boxplot
-fig5.update_traces(xaxis="x", x0=0, dx=0.2, selector=dict(type="box"))
-fig5.update_traces(xaxis="x", x0=-0.35, dx=0.0004, selector=dict(type="scatter"))
+fig4.update_traces(xaxis="x", x0=0, dx=0.2, selector=dict(type="box"))
+fig4.update_traces(xaxis="x", x0=-0.35, dx=0.0004, selector=dict(type="scatter"))
 
 # Ocultar los valores del eje x
-fig5.update_xaxes(showticklabels=False)
-
-fig5.show()
-
-# Save the interactive HTML chart
-# fig5.write_html("./HTMLs/boxplot_sepal_width.html")
+fig4.update_xaxes(showticklabels=False)
 
 # -----------------------------------------------------------------------------------------#
+
 # Boxplot Comparison
 # Lista de colores de relleno para los boxplots
 fill_colors = ["#6331C5", "#3F7AD8", "#12BF80"]
@@ -221,10 +171,10 @@ for i in range(len(fill_colors)):
     box_traces.append(box_trace)
 
 # Crear la figura y agregar los boxplots personalizados
-fig6 = go.Figure(box_traces)
+fig5 = go.Figure(box_traces)
 
 # Configuraciones adicionales
-fig6.update_layout(
+fig5.update_layout(
     title='<b style="font-size:24px>A Simple Boxplot Comparison</b><br><span style="font-size:14px;">from Iris Dataset</span>',
     xaxis=dict(title="Species"),
     yaxis=dict(title="Sepal Width"),
@@ -236,11 +186,33 @@ fig6.update_layout(
     template="plotly_dark",
 )
 
-# Mostrar la figura
-fig6.show()
+# -----------------------------------------------------------------------------------------#
+# Similar to Boxplot Comparison of Fig5
+fig6 = px.box(
+    df,
+    x="species",
+    y="sepal_width",
+    color="species",
+    points="all",
+    title='<b style="font-size:24px>A Simple Boxplot Comparison</b><br><span style="font-size:14px;">from Iris Dataset</span>',
+    labels={"sepal_width": "Sepal Width", "species": "Species"},
+    template="plotly_dark",
+    color_discrete_sequence=["#6331C5", "#3F7AD8", "#12BF80"],
+)
 
-# Save the interactive HTML chart
-# fig6.write_html("./HTMLs/boxplot_species_comparison.html")
+fig6.update_traces(
+    marker=dict(color="#12BF80"),  # Color de relleno
+    line=dict(color="#F2F2F2"),  # Color de línea de contorno
+)
+
+# Customize the layout
+fig6.update_layout(
+    font_family="Montserrat",
+    showlegend=True,
+    legend_title="<b>Species:<b>",
+    legend=dict(x=0.74, y=0.96, bgcolor="rgba(255, 255, 255, 0.5)", orientation="h"),
+    legend_font_color="#262626",
+)
 
 # -----------------------------------------------------------------------------------------#
 # Histogram
@@ -334,11 +306,6 @@ fig7.add_trace(
 
 fig7.update_yaxes(title_text="")
 
-fig7.show()
-
-# Save the interactive HTML chart
-# fig7.write_html("./HTMLs/histogram_sepal_width.html")
-
 # -----------------------------------------------------------------------------------------#
 # Multiple Histograms
 fig8 = px.histogram(
@@ -367,11 +334,6 @@ fig8.update_layout(
     legend=dict(x=0.74, y=0.98, bgcolor="rgba(255, 255, 255, 0.5)", orientation="h"),
     legend_font_color="#262626",
 )
-
-fig8.show()
-
-# Save the interactive HTML chart
-# fig8.write_html("./HTMLs/histogram_species_overlay.html")
 
 # -----------------------------------------------------------------------------------------#
 # Histogram for General Counting
@@ -424,8 +386,6 @@ screen_height = screen_info[0].height
 
 # Customize the layout
 fig9.update_layout(
-    height=screen_height * 0.7,
-    width=screen_width * 0.8,
     font_family="Montserrat",
     showlegend=True,
     yaxis_title=" ",
@@ -435,11 +395,6 @@ fig9.update_layout(
 )
 
 fig9.update_traces(hovertemplate="<b>Percent</b>: %{y:.2f}%")
-
-fig9.show()
-
-# Save the interactive HTML chart
-fig9.write_html("./HTMLs/histogram_general_count.html")
 
 # -----------------------------------------------------------------------------------------#
 # Scatterplot with Regression Lines
@@ -469,94 +424,72 @@ fig10.update_layout(
     legend_font_color="#262626",
 )
 
-fig10.show()
-
-# # Save the interactive HTML chart
-# fig10.write_html("./HTMLs/scatterplot_regression.html")
-
-# -----------------------------------------------------------------------------------------#
-# Scatterplot with Marginal Plots
-fig11 = px.scatter(
-    df,
-    x="sepal_width",
-    y="sepal_length",
-    color="species",
-    marginal_y="box",
-    marginal_x="box",
-    trendline="ols",
-    title='<b style="font-size:24px>A Simple Scatterplot with Margin Plots</b><br><span style="font-size:14px;">from Iris Dataset</span>',
-    labels={
-        "sepal_width": "Sepal Width",
-        "sepal_length": "Sepal Length",
-        "species": "Species",
-    },
-    template="plotly_dark",
-    color_discrete_sequence=["#6331C5", "#3F7AD8", "#12BF80"],
-)
-
-# Customize the layout
-fig11.update_traces(marker=dict(size=10, line=dict(color="#F2F2F2", width=0.5)))
-# Customize the layout
-fig11.update_layout(
-    font_family="Montserrat",
-    showlegend=True,
-    legend_title="<b>Species:<b>",
-    legend=dict(x=0.74, y=0.98, bgcolor="rgba(255, 255, 255, 0.5)", orientation="h"),
-    legend_font_color="#262626",
-)
-
-# Personalizar el color del relleno de los boxplots marginales
-fill_colors = ["#6331C5", "#3F7AD8", "#12BF80"]
-for i, species in enumerate(df["species"].unique()):
-    fig11.update_traces(
-        marker=dict(color=fill_colors[i], line=dict(color="#F2F2F2")),
-        line=dict(color="#F2F2F2"),
-        fillcolor=fill_colors[i],
-        selector=dict(type="box", name=species),
-    )
-
-fig11.show()
-
-# Save the interactive HTML chart
-# fig11.write_html("./HTMLs/scatterplot_marginal_plots.html")
-
 # -----------------------------------------------------------------------------------------#
 # Create a Dashboard with make_subplots
-# from plotly.subplots import make_subplots
-# import screeninfo
+from plotly.subplots import make_subplots
 
-# fig14 = make_subplots(rows=4, cols=4, subplot_titles=['Sepal Width vs Sepal Length', 'Sepal Width vs Sepal Length with Species and Petal Length',
-#                                                       '3D Scatterplot of Sepal and Petal Dimensions', 'Scatter Matrix of Sepal and Petal Dimensions',
-#                                                       'Boxplot of Sepal Width', 'Boxplot Comparison of Sepal Width by Species', 'Histogram of Sepal Width',
-#                                                       'Overlayed Histograms of Sepal Width by Species', 'Histogram Chart for General Counting',
-#                                                       'Bar Chart of Species', 'Bar Chart of Sepal Length by Species', 'Scatterplot with Regression Lines',
-#                                                       'Scatterplot with Marginal Plots'])
+fig12 = make_subplots(
+    rows=5,
+    cols=2,
+    subplot_titles=[
+        "A Simple Scatterplot",
+        "A Simple Scatterplot with Color and Size",
+        "Another Simple Scatterplot with Color and Size",
+        "A Simple Boxplot",
+        "A Simple Boxplot Comparison",
+        "Another Simple Boxplot Comparison",
+        "A Simple Histogram",
+        "A Simple Multiple Histogram",
+        "A Simple Histogram Chart for General Percentage",
+        "A Simple Scatterplot with Regression Lines",
+    ],
+    horizontal_spacing=0.035,
+    vertical_spacing=0.025,
+)
 
-# # Add traces to the subplots
-# fig14.add_trace(fig1['data'][0], row=1, col=1)
-# fig14.add_trace(fig2['data'][0], row=1, col=2)
-# fig14.add_trace(fig4['data'][0], row=1, col=3)
-# fig14.add_trace(fig5['data'][0], row=2, col=4)
-# fig14.add_trace(fig6['data'][0], row=2, col=1)
-# fig14.add_trace(fig7['data'][0], row=2, col=2)
-# fig14.add_trace(fig8['data'][0], row=2, col=3)
-# fig14.add_trace(fig9['data'][0], row=3, col=4)
-# fig14.add_trace(fig10['data'][0], row=3, col=1)
-# fig14.add_trace(fig11['data'][0], row=3, col=2)
-# fig14.add_trace(fig12['data'][0], row=3, col=3)
-# fig14.add_trace(fig13['data'][0], row=4, col=4)
+# Add traces to the subplots
+for trace in fig1['data']:
+    fig12.add_trace(trace, row=1, col=1)
+for trace in fig2['data']:
+    fig12.add_trace(trace, row=1, col=2)
+for trace in fig3['data']:
+    fig12.add_trace(trace, row=2, col=1)
+for trace in fig4['data']:
+    fig12.add_trace(trace, row=2, col=2)
+for trace in fig5['data']:
+    fig12.add_trace(trace, row=3, col=1)
+for trace in fig6['data']:
+    fig12.add_trace(trace, row=3, col=2)
+for trace in fig7['data']:
+    fig12.add_trace(trace, row=4, col=1)
+for trace in fig8['data']:
+    fig12.add_trace(trace, row=4, col=2)
+for trace in fig9['data']:
+    fig12.add_trace(trace, row=5, col=1)
+for trace in fig10['data']:
+    fig12.add_trace(trace, row=5, col=2)
+# fig12.add_trace(fig9["data"][0], row=5, col=1)
+# fig12.add_trace(fig11["data"][0], row=5, col=2)
+# fig12.add_trace(fig10['data'][0], row=5, col=2)
 
-# # Get screen resolution
-# screen_info = screeninfo.get_monitors()
-# screen_width = screen_info[0].width
-# screen_height = screen_info[0].height
 
-# # Update layout
-# fig14.update_layout(height=screen_height, width=screen_width, showlegend=False, title_text='<b style="font-size:24px">Iris Dataset Dashboard</b>',
-#                     font_family="Montserrat", template='plotly_dark')
+# Get screen resolution
+screen_info = screeninfo.get_monitors()
+screen_width = screen_info[0].width
+screen_height = screen_info[0].height
 
-# # Save the interactive HTML dashboard
-# fig14.write_html("iris_dataset_dashboard.html")
+# Update layout
+fig12.update_layout(
+    height=screen_height*5,
+    width=screen_width*2,
+    # showlegend=False,
+    title_text='<b style="font-size:24px">A Simple Iris Dataset Dashboard</b>',
+    font_family="Montserrat",
+    template="plotly_dark",
+)
 
-# # Display the dashboard
-# fig14.show()
+# Save the interactive HTML dashboard
+fig12.write_html("iris_dataset_dashboard.html")
+
+# Display the dashboard
+fig12.show()

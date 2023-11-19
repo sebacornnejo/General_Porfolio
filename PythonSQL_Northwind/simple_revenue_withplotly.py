@@ -13,6 +13,16 @@ import plotly.express as px  # Import Plotly for better styling
 # Each chart is saved as an interactive HTML file using Plotly for easy sharing and embedding into dashboards.
 # -----------------------------------------------------------------------------------------#
 
+# Add custom styles and links to the head of the HTML file
+styles = '''
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+'''
+
 # Connect to the Northwind database using SQLite
 conn = sqlite3.connect("Northwind.db")
 
@@ -42,6 +52,18 @@ fig1.update_layout(xaxis_title='Product Name', yaxis_title='Revenue',
 
 # Save the interactive HTML chart
 fig1.write_html("top_products_chart.html")
+
+# Add Montserrat font style to the generated HTML
+# Read the content of the generated HTML file with UTF-8 encoding
+with open("top_products_chart.html", "r", encoding="utf-8") as file:
+    content = file.read()
+    
+# Insert the styles in the head of the HTML file
+content = content.replace('</head>', styles + '</head>')
+
+# Escribir el contenido modificado de nuevo al archivo HTML
+with open("top_products_chart.html", "w", encoding="utf-8") as file:
+    file.write(content)
 
 # Display the chart
 # fig1.show()
@@ -80,6 +102,18 @@ fig2.update_layout(xaxis_title='Employee Name', yaxis_title='Total Orders',
 
 # Save the interactive HTML chart
 fig2.write_html("top_employees_chart.html")
+
+# Add Montserrat font style to the generated HTML
+# Read the content of the generated HTML file with UTF-8 encoding
+with open("top_employees_chart.html", "r", encoding="utf-8") as file:
+    content = file.read()
+    
+# Insert the styles in the head of the HTML file
+content = content.replace('</head>', styles + '</head>')
+
+# Escribir el contenido modificado de nuevo al archivo HTML
+with open("top_employees_chart.html", "w", encoding="utf-8") as file:
+    file.write(content)
 
 # Display the chart
 # fig2.show()
@@ -120,6 +154,18 @@ fig3.update_layout(xaxis_title='Employee Name', yaxis_title='Revenue',
 
 # Save the interactive HTML chart
 fig3.write_html("top_employeessales_chart.html")
+
+# Add Montserrat font style to the generated HTML
+# Read the content of the generated HTML file with UTF-8 encoding
+with open("top_employeessales_chart.html", "r", encoding="utf-8") as file:
+    content = file.read()
+    
+# Insert the styles in the head of the HTML file
+content = content.replace('</head>', styles + '</head>')
+
+# Escribir el contenido modificado de nuevo al archivo HTML
+with open("top_employeessales_chart.html", "w", encoding="utf-8") as file:
+    file.write(content)
 
 # Display the chart
 # fig3.show()
@@ -187,6 +233,18 @@ fig.update_yaxes(title_text='Revenue', row=1, col=3)
 
 # Save the interactive HTML dashboard
 fig.write_html("northwind_dashboard.html")
+
+# Add Montserrat font style to the generated HTML
+# Read the content of the generated HTML file with UTF-8 encoding
+with open("northwind_dashboard.html", "r", encoding="utf-8") as file:
+    content = file.read()
+    
+# Insert the styles in the head of the HTML file
+content = content.replace('</head>', styles + '</head>')
+
+# Escribir el contenido modificado de nuevo al archivo HTML
+with open("northwind_dashboard.html", "w", encoding="utf-8") as file:
+    file.write(content)
 
 # Display the dashboard
 fig.show()

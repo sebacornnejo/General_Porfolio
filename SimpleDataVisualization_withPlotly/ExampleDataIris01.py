@@ -13,6 +13,16 @@ import plotly.graph_objects as go
 # Each chart is saved as an interactive HTML file using Plotly for easy sharing and embedding into dashboards.
 # -----------------------------------------------------------------------------------------#
 
+# Add custom styles and links to the head of the HTML file
+styles = '''
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+'''
+
 # Load the Iris dataset
 df = px.data.iris()
 
@@ -49,7 +59,19 @@ fig1.update_traces(marker=dict(size=12, line=dict(color="#F2F2F2", width=2)))
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
-# fig1.write_html("./HTMLs/scatterplot_sepal.html")
+fig1.write_html("./HTMLs/scatterplot_sepal.html")
+
+# Add Montserrat font style to the generated HTML
+# Read the content of the generated HTML file with UTF-8 encoding
+with open("./HTMLs/scatterplot_sepal.html", "r", encoding="utf-8") as file:
+    content = file.read()
+    
+# Insert the styles in the head of the HTML file
+content = content.replace('</head>', styles + '</head>')
+
+# Escribir el contenido modificado de nuevo al archivo HTML
+with open("./HTMLs/scatterplot_sepal.html", "w", encoding="utf-8") as file:
+    file.write(content)
 
 # -----------------------------------------------------------------------------------------#
 # Explanation:
@@ -92,7 +114,19 @@ fig2.update_layout(
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
-# fig2.write_html("./HTMLs/scatterplot_species.html")
+fig2.write_html("./HTMLs/scatterplot_species.html")
+
+# Add Montserrat font style to the generated HTML
+# Read the content of the generated HTML file with UTF-8 encoding
+with open("./HTMLs/scatterplot_species.html", "r", encoding="utf-8") as file:
+    content = file.read()
+    
+# Insert the styles in the head of the HTML file
+content = content.replace('</head>', styles + '</head>')
+
+# Escribir el contenido modificado de nuevo al archivo HTML
+with open("./HTMLs/scatterplot_species.html", "w", encoding="utf-8") as file:
+    file.write(content)
 
 # -----------------------------------------------------------------------------------------#
 # Explanation:
@@ -139,7 +173,19 @@ fig3.update_layout(
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
-# fig3.write_html("./HTMLs/scatterplot_3d.html")
+fig3.write_html("./HTMLs/scatterplot_3d.html")
+
+# Add Montserrat font style to the generated HTML
+# Read the content of the generated HTML file with UTF-8 encoding
+with open("./HTMLs/scatterplot_3d.html", "r", encoding="utf-8") as file:
+    content = file.read()
+    
+# Insert the styles in the head of the HTML file
+content = content.replace('</head>', styles + '</head>')
+
+# Escribir el contenido modificado de nuevo al archivo HTML
+with open("./HTMLs/scatterplot_3d.html", "w", encoding="utf-8") as file:
+    file.write(content)
 
 # -----------------------------------------------------------------------------------------#
 # Explanation:
@@ -184,7 +230,19 @@ fig4.update_layout(
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
-# fig4.write_html("./HTMLs/scatter_matrix.html")
+fig4.write_html("./HTMLs/scatter_matrix.html")
+
+# Add Montserrat font style to the generated HTML
+# Read the content of the generated HTML file with UTF-8 encoding
+with open("./HTMLs/scatter_matrix.html", "r", encoding="utf-8") as file:
+    content = file.read()
+    
+# Insert the styles in the head of the HTML file
+content = content.replace('</head>', styles + '</head>')
+
+# Escribir el contenido modificado de nuevo al archivo HTML
+with open("./HTMLs/scatter_matrix.html", "w", encoding="utf-8") as file:
+    file.write(content)
 
 # -----------------------------------------------------------------------------------------#
 # Explanation:
@@ -247,7 +305,19 @@ fig5.update_xaxes(showticklabels=False)
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
-# fig5.write_html("./HTMLs/boxplot_sepal_width.html")
+fig5.write_html("./HTMLs/boxplot_sepal_width.html")
+
+# Add Montserrat font style to the generated HTML
+# Read the content of the generated HTML file with UTF-8 encoding
+with open("./HTMLs/boxplot_sepal_width.html", "r", encoding="utf-8") as file:
+    content = file.read()
+    
+# Insert the styles in the head of the HTML file
+content = content.replace('</head>', styles + '</head>')
+
+# Escribir el contenido modificado de nuevo al archivo HTML
+with open("./HTMLs/boxplot_sepal_width.html", "w", encoding="utf-8") as file:
+    file.write(content)
 
 # -----------------------------------------------------------------------------------------#
 # Explanation:
@@ -302,7 +372,19 @@ fig6.update_layout(
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
-# fig6.write_html("./HTMLs/boxplot_species_comparison.html")
+fig6.write_html("./HTMLs/boxplot_species_comparison.html")
+
+# Add Montserrat font style to the generated HTML
+# Read the content of the generated HTML file with UTF-8 encoding
+with open("./HTMLs/boxplot_species_comparison.html", "r", encoding="utf-8") as file:
+    content = file.read()
+    
+# Insert the styles in the head of the HTML file
+content = content.replace('</head>', styles + '</head>')
+
+# Escribir el contenido modificado de nuevo al archivo HTML
+with open("./HTMLs/boxplot_species_comparison.html", "w", encoding="utf-8") as file:
+    file.write(content)
 
 # -----------------------------------------------------------------------------------------#
 # Explanation:
@@ -413,7 +495,19 @@ fig7.update_yaxes(title_text="")
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
-# fig7.write_html("./HTMLs/histogram_sepal_width.html")
+fig7.write_html("./HTMLs/histogram_sepal_width.html")
+
+# Add Montserrat font style to the generated HTML
+# Read the content of the generated HTML file with UTF-8 encoding
+with open("./HTMLs/histogram_sepal_width.html", "r", encoding="utf-8") as file:
+    content = file.read()
+    
+# Insert the styles in the head of the HTML file
+content = content.replace('</head>', styles + '</head>')
+
+# Escribir el contenido modificado de nuevo al archivo HTML
+with open("./HTMLs/histogram_sepal_width.html", "w", encoding="utf-8") as file:
+    file.write(content)
 
 # -----------------------------------------------------------------------------------------#
 # Explanation:
@@ -459,7 +553,19 @@ fig8.update_layout(
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
-# fig8.write_html("./HTMLs/histogram_species_overlay.html")
+fig8.write_html("./HTMLs/histogram_species_overlay.html")
+
+# Add Montserrat font style to the generated HTML
+# Read the content of the generated HTML file with UTF-8 encoding
+with open("./HTMLs/histogram_species_overlay.html", "r", encoding="utf-8") as file:
+    content = file.read()
+    
+# Insert the styles in the head of the HTML file
+content = content.replace('</head>', styles + '</head>')
+
+# Escribir el contenido modificado de nuevo al archivo HTML
+with open("./HTMLs/histogram_species_overlay.html", "w", encoding="utf-8") as file:
+    file.write(content)
 
 # -----------------------------------------------------------------------------------------#
 # Explanation:
@@ -544,7 +650,19 @@ fig9.update_traces(hovertemplate="<b>Percent</b>: %{y:.2f}%")
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
-# fig9.write_html("./HTMLs/histogram_general_count.html")
+fig9.write_html("./HTMLs/histogram_general_count.html")
+
+# Add Montserrat font style to the generated HTML
+# Read the content of the generated HTML file with UTF-8 encoding
+with open("./HTMLs/histogram_general_count.html", "r", encoding="utf-8") as file:
+    content = file.read()
+    
+# Insert the styles in the head of the HTML file
+content = content.replace('</head>', styles + '</head>')
+
+# Escribir el contenido modificado de nuevo al archivo HTML
+with open("./HTMLs/histogram_general_count.html", "w", encoding="utf-8") as file:
+    file.write(content)
 
 # -----------------------------------------------------------------------------------------#
 # Explanation:
@@ -590,7 +708,19 @@ fig10.update_layout(
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
-# fig10.write_html("./HTMLs/scatterplot_regression.html")
+fig10.write_html("./HTMLs/scatterplot_regression.html")
+
+# Add Montserrat font style to the generated HTML
+# Read the content of the generated HTML file with UTF-8 encoding
+with open("./HTMLs/scatterplot_regression.html", "r", encoding="utf-8") as file:
+    content = file.read()
+    
+# Insert the styles in the head of the HTML file
+content = content.replace('</head>', styles + '</head>')
+
+# Escribir el contenido modificado de nuevo al archivo HTML
+with open("./HTMLs/scatterplot_regression.html", "w", encoding="utf-8") as file:
+    file.write(content)
 
 # -----------------------------------------------------------------------------------------#
 # Explanation:
@@ -646,7 +776,19 @@ for i, species in enumerate(df["species"].unique()):
 
 # Save the interactive HTML chart
 # Uncomment the following line to save the interactive HTML chart:
-# fig11.write_html("./HTMLs/scatterplot_marginal_plots.html")
+fig11.write_html("./HTMLs/scatterplot_marginal_plots.html")
+
+# Add Montserrat font style to the generated HTML
+# Read the content of the generated HTML file with UTF-8 encoding
+with open("./HTMLs/scatterplot_marginal_plots.html", "r", encoding="utf-8") as file:
+    content = file.read()
+    
+# Insert the styles in the head of the HTML file
+content = content.replace('</head>', styles + '</head>')
+
+# Escribir el contenido modificado de nuevo al archivo HTML
+with open("./HTMLs/scatterplot_marginal_plots.html", "w", encoding="utf-8") as file:
+    file.write(content)
 
 # -----------------------------------------------------------------------------------------#
 # Explanation:
@@ -823,6 +965,18 @@ fig12.show()
 
 # Save the interactive HTML dashboard
 fig12.write_html("./HTMLs/big_iris_dataset_dashboard.html")
+
+# Add Montserrat font style to the generated HTML
+# Read the content of the generated HTML file with UTF-8 encoding
+with open("./HTMLs/big_iris_dataset_dashboard.html", "r", encoding="utf-8") as file:
+    content = file.read()
+    
+# Insert the styles in the head of the HTML file
+content = content.replace('</head>', styles + '</head>')
+
+# Escribir el contenido modificado de nuevo al archivo HTML
+with open("./HTMLs/big_iris_dataset_dashboard.html", "w", encoding="utf-8") as file:
+    file.write(content)
 
 # -----------------------------------------------------------------------------------------#
 # Explanation:

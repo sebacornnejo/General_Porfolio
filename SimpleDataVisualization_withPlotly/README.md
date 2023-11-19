@@ -43,12 +43,12 @@ To clone this repository, use the following command: `git clone --depth=1 --filt
 ### Basic Scatterplot
 
 - **Visual Output:** A basic scatterplot of sepal length and width is included with customization options.
-- **Interactive Chart:** [Interactive HTML Scatterplot](https://sebacornnejo.github.io/scatterplot_basic.html)
+- **Interactive Chart:** [Interactive HTML Scatterplot](https://sebacornnejo.github.io/scatterplot_sepal.html)
 
 ### Scatterplot with Color and Size
 
 - **Visual Output:** A scatter plot is explored with variations in color and size depending on the species and sepal width.
-- **Interactive Chart:** [Interactive HTML Scatterplot with Color and Size](https://sebacornnejo.github.io/scatterplot_color_size.html)
+- **Interactive Chart:** [Interactive HTML Scatterplot with Color and Size](https://sebacornnejo.github.io/scatterplot_species.html)
 
 ### Scatterplot with Regression Lines
 

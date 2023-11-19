@@ -1,5 +1,5 @@
 venv
 
-./ScrapingGoogle/API_KEY
+ScrapingGoogle/API_KEY
 
-./ScrapingGoogle/SEARCH_ENGINE_ID
+ScrapingGoogle/SEARCH_ENGINE_ID

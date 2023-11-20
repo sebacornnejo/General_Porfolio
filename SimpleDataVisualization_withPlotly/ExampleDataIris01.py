@@ -40,7 +40,7 @@ fig1 = px.scatter(
     df,
     x="sepal_width",
     y="sepal_length",
-    title='<b style="font-size:24px>A Simple Scatterplot</b><br><span style="font-size:14px;">from Iris Dataset</span>',
+    title='<b style="font-size:24px">A Simple Scatterplot</b><br><span style="font-size:12px;">from Iris Dataset</span>',
     labels={"sepal_width": "Sepal Width", "sepal_length": "Sepal Length"},
     template="plotly_dark",
     color_discrete_sequence=["#6331C5"],
@@ -87,7 +87,7 @@ fig2 = px.scatter(
     y="sepal_length",
     color="species",
     size="petal_length",
-    title='<b style="font-size:24px>A Simple Scatterplot with Color and Size</b><br><span style="font-size:14px;">from Iris Dataset</span>',
+    title='<b style="font-size:16px;">A Simple Scatterplot with Color and Size</b><br><span style="font-size:12px;">from Iris Dataset</span>',
     labels={
         "sepal_width": "Sepal Width",
         "sepal_length": "Sepal Length",
@@ -144,7 +144,7 @@ fig3 = px.scatter_3d(
     z="petal_width",
     color="species",
     size="sepal_width",
-    title='<b style="font-size:24px>A Simple 3D Scatterplot</b><br><span style="font-size:14px;">from Iris Dataset</span>',
+    title='<b style="font-size:16px;">A Simple 3D Scatterplot</b><br><span style="font-size:12px;">from Iris Dataset</span>',
     labels={
         "sepal_length": "Sepal Length",
         "petal_length": "Petal Length",
@@ -204,7 +204,7 @@ fig4 = px.scatter_matrix(
     df,
     dimensions=["sepal_width", "sepal_length", "petal_width", "petal_length"],
     color="species",
-    title='<b style="font-size:24px>A Simple Scatter Matrix</b><br><span style="font-size:14px;">from Iris Dataset</span>',
+    title='<b style="font-size:16px;">A Simple Scatter Matrix</b><br><span style="font-size:12px;">from Iris Dataset</span>',
     labels={
         "sepal_length": "Sepal Length",
         "petal_length": "Petal Length",
@@ -258,7 +258,7 @@ with open("./HTMLs/scatter_matrix.html", "w", encoding="utf-8") as file:
 fig5 = px.box(
     df,
     y="sepal_width",
-    title='<b style="font-size:24px>A Simple Boxplot</b><br><span style="font-size:14px;">from Iris Dataset</span>',
+    title='<b style="font-size:16px;">A Simple Boxplot</b><br><span style="font-size:12px;">from Iris Dataset</span>',
     labels={"sepal_width": "Sepal Width"},
     template="plotly_dark",
     color_discrete_sequence=["#3F7AD8"],
@@ -356,7 +356,7 @@ fig6 = go.Figure(box_traces)
 
 # Additional configurations
 fig6.update_layout(
-    title='<b style="font-size:24px>A Simple Boxplot Comparison</b><br><span style="font-size:14px;">from Iris Dataset</span>',
+    title='<b style="font-size:16px;">A Simple Boxplot Comparison</b><br><span style="font-size:12px;">from Iris Dataset</span>',
     xaxis=dict(title="Species"),
     yaxis=dict(title="Sepal Width"),
     font_family="Montserrat",
@@ -410,7 +410,7 @@ fig7 = px.histogram(
     df,
     x="sepal_width",
     nbins=bin,
-    title='<b style="font-size:24px>A Simple Histogram</b><br><span style="font-size:14px;">from Iris Dataset</span>',
+    title='<b style="font-size:16px;">A Simple Histogram</b><br><span style="font-size:12px;">from Iris Dataset</span>',
     labels={"sepal_width": "Sepal Width"},
     template="plotly_dark",
     color_discrete_sequence=["#6331C5"],
@@ -525,7 +525,7 @@ fig8 = px.histogram(
     x="sepal_width",
     color="species",
     nbins=10,
-    title='<b style="font-size:24px>A Simple Multiple Histogram</b><br><span style="font-size:14px;">from Iris Dataset</span>',
+    title='<b style="font-size:16px;">A Simple Multiple Histogram</b><br><span style="font-size:12px;">from Iris Dataset</span>',
     labels={"sepal_width": "Sepal Width", "species": "Species"},
     template="plotly_dark",
     color_discrete_sequence=["#6331C5", "#3F7AD8", "#12BF80"],
@@ -620,7 +620,7 @@ fig9 = px.histogram(
     color="sepal_width",
     histnorm="percent",
     height=400,
-    title='<b style="font-size:24px>A Simple Histogram Chart for General Percentage</b><br><span style="font-size:14px;">from Iris Dataset</span>',
+    title='<b style="font-size:16px;">A Simple Histogram Chart for General Percentage</b><br><span style="font-size:12px;">from Iris Dataset</span>',
     labels={"species": "Species", "sepal_width": "Sepal Width"},
     template="plotly_dark",
     color_discrete_sequence=color_palette_cpt,
@@ -681,7 +681,7 @@ fig10 = px.scatter(
     y="sepal_length",
     color="species",
     trendline="ols",  # Adding Ordinary Least Squares (OLS) regression lines
-    title='<b style="font-size:24px>A Simple Scatterplot with Regression Lines</b><br><span style="font-size:14px;">from Iris Dataset</span>',
+    title='<b style="font-size:16px;">A Simple Scatterplot with Regression Lines</b><br><span style="font-size:12px;">from Iris Dataset</span>',
     labels={
         "sepal_width": "Sepal Width",
         "sepal_length": "Sepal Length",
@@ -739,7 +739,7 @@ fig11 = px.scatter(
     marginal_y="box",  # Add marginal boxplots on the y-axis
     marginal_x="box",  # Add marginal boxplots on the x-axis
     trendline="ols",  # Adding Ordinary Least Squares (OLS) regression lines
-    title='<b style="font-size:24px>A Simple Scatterplot with Margin Plots</b><br><span style="font-size:14px;">from Iris Dataset</span>',
+    title='<b style="font-size:16px;">A Simple Scatterplot with Margin Plots</b><br><span style="font-size:12px;">from Iris Dataset</span>',
     labels={
         "sepal_width": "Sepal Width",
         "sepal_length": "Sepal Length",
@@ -816,7 +816,7 @@ fig2a = px.scatter(
     y="petal_width",
     color="species",
     size="sepal_width",
-    title='<b style="font-size:24px>A Simple Scatterplot with Color and Size</b><br><span style="font-size:14px;">from Iris Dataset</span>',
+    title='<b style="font-size:16px;">A Simple Scatterplot with Color and Size</b><br><span style="font-size:12px;">from Iris Dataset</span>',
     labels={
         "sepal_width": "Sepal Width",
         "petal_width": "Petal Width",
@@ -849,7 +849,7 @@ fig6a = px.box(
     y="sepal_width",
     color="species",
     points="all",
-    title='<b style="font-size:24px>A Simple Boxplot Comparison</b><br><span style="font-size:14px;">from Iris Dataset</span>',
+    title='<b style="font-size:16px;">A Simple Boxplot Comparison</b><br><span style="font-size:12px;">from Iris Dataset</span>',
     labels={"sepal_width": "Sepal Width", "species": "Species"},
     template="plotly_dark",
     color_discrete_sequence=["#6331C5", "#3F7AD8", "#12BF80"],

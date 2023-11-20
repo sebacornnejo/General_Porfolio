@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import PIL.Image
 from collections import Counter
+import os
+import pandas as pd
 import plotly.graph_objects as go
 
 
@@ -37,35 +39,44 @@ def generate_wordcloud(text):
                 "rosario",
                 "picture",
                 "pages",
-                "january",
                 "url",
                 "tarefa",
                 "T",
                 "etc",
-                "Jul",
-                "Apr",
-                "May",
-                "Sep",
-                "Feb",
                 "Add",
                 "et",
                 "Jan",
+                "Feb",
                 "Mar",
-                "Dec",
+                "Apr",
+                "May",
                 "Jun",
+                "Jul",
                 "Aug",
-                "Nov",
+                "Sep",
                 "Oct",
-                "July",
-                "April",
-                "September",
+                "Nov",
+                "Dec",
+                "January",
                 "February",
                 "March",
-                "December",
+                "April",
+                "May",
                 "June",
+                "July",
                 "August",
-                "November",
+                "September",
                 "October",
+                "November",
+                "December",
+                "thus",
+                "often",
+                "generally",
+                "specifically",
+                "described",
+                "defined",
+                "without",
+                "based",
             ]
         ),
         mask=flag_mask,
@@ -82,61 +93,93 @@ def generate_wordcloud(text):
     plt.axis("off")
     plt.show()
     
-    # word_freq = Counter(text.split())
-    # wc_data = wc.words_
-
+    word_freq = Counter(text.split())
+    wc_data = wc.words_
     
-    # import plotly.express as px
-    # import pandas as pd
-    # # Crear un DataFrame para Plotly Express
-    # df = pd.DataFrame(wc_data.items(), columns=['word', 'freq'])
+    # Filtrar word_freq para incluir solo las palabras presentes en wc_data
+    word_freq = {word: freq for word, freq in word_freq.items() if word in wc_data}
 
-    # fig = px.scatter(df,
-    #                  x='word',
-    #                  y='freq',
-    #                  size='freq',
-    #                  hover_name='word',
-    #                  color='freq',
-    #                  color_continuous_scale='viridis',
-    #                  text=df['word'].apply(lambda w: f"{w}: {word_freq[w]}"))
-
-    # fig.update_layout(title='Word Cloud',
-    #                   xaxis={'showgrid': False, 'showticklabels': False, 'zeroline': False},
-    #                   yaxis={'showgrid': False, 'showticklabels': False, 'zeroline': False})
-
-    # return fig
+    # Crear un DataFrame para las palabras
+    # wordf = pd.DataFrame(wc_data.items(), columns=['word', 'freq'])
+    # wordf['count'] = wordf['word'].apply(lambda w: f"{word_freq[w]}")
+    
+    return Counter(word_freq)
 
 
-def generate_bar_chart(text):
-    words = text.split()
-    word_counter = Counter(words)
-    common_words = word_counter.most_common(10)
+def generate_bar_chart(word_counter):
+    common_words = word_counter.most_common(20)
 
-    plt.figure(figsize=(10, 5))
-    plt.bar([word[0] for word in common_words], [word[1] for word in common_words])
-    plt.xlabel("Words")
-    plt.ylabel("Frequency")
-    plt.title("Words related to anarchism in Wiki")
-    plt.show()
+    # Crear el gráfico de barras con Plotly
+    figbar = go.Figure()
+    figbar.add_trace(go.Bar(x=[word[0] for word in common_words], y=[word[1] for word in common_words],
+                        marker_color='#6331C5'))  # Utiliza el color principal que hemos estado usando
+
+    # Personalizar el diseño del gráfico
+    figbar.update_layout(
+        xaxis_title="Words",
+        yaxis_title="Count",
+        title='<b style="font-size:16px;">Top 20 words related to Anarchy</b><br><span style="font-size:12px;">on a Wikipedia page</span>',
+        template="plotly_dark",  # Utiliza el tema oscuro que hemos estado utilizando
+        font_family="Montserrat",  # Utiliza la fuente que hemos estado utilizando
+    )
+    
+    figbar.update_traces(
+    marker=dict(line=dict(color="#F2F2F2")),
+    hovertemplate="Word: %{x}<br>Count: %{y}",
+    name="",
+    )
+
+    # Mostrar el gráfico
+    figbar.show()
+    
+    # Add custom styles and links to the head of the HTML file
+    styles = '''
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Montserrat', sans-serif;
+            }
+        </style>
+    '''
+    
+    # Save the interactive HTML chart
+    # Uncomment the following line to save the interactive HTML chart:
+    figbar.write_html("./HTMLs/WordsonaWikipediapage.html")
+
+    # Add Montserrat font style to the generated HTML
+    # Read the content of the generated HTML file with UTF-8 encoding
+    with open("./HTMLs/WordsonaWikipediapage.html", "r", encoding="utf-8") as file:
+        content = file.read()
+    
+    # Insert the styles in the head of the HTML file
+    content = content.replace('</head>', styles + '</head>')
+
+    # Escribir el contenido modificado de nuevo al archivo HTML
+    with open("./HTMLs/WordsonaWikipediapage.html", "w", encoding="utf-8") as file:
+        file.write(content)
 
 
 def main():
-    search_query = "Anarchism"
-    page_content = get_wikipedia_page(search_query)
-    text = extract_text_from_page(page_content)
+    search_query = "Anarchy"
+    # Verificar si el archivo ya existe
+    # OJO: SI EL SEARCH_QUERY ES CAMBIADO, DEBE ELIMINAR EL ARCHIVO ANTERIOR
+    if os.path.exists('Wiki01_text.txt'):
+        with open('Wiki01_text.txt', 'r', encoding='utf-8') as file:
+            text = file.read()
+    else:
+        # Realizar scraping si el archivo no existe
+        page_content = get_wikipedia_page(search_query)
+        text = extract_text_from_page(page_content)
     
-    # Guardar el contenido en un archivo de texto
-    with open('Wiki01_text.txt', 'w', encoding='utf-8') as file:
-        file.write(text)
+         # Guardar el contenido en un archivo de texto
+        with open('Wiki01_text.txt', 'w', encoding='utf-8') as file:
+            file.write(text)
 
-    # Plot Word Cloud
-    generate_wordcloud(text)
-    # plotly_fig = generate_wordcloud(text)
-    
-    # plotly_fig.show()
+    # Plot Word Cloud and return frequency words to bar plot
+    word_freq = generate_wordcloud(text)
 
     # Plot Bar Chart
-    generate_bar_chart(text)
+    generate_bar_chart(word_freq)
 
 if __name__ == "__main__":
     main()

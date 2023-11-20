@@ -1,6 +1,5 @@
 import requests
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
-from bs4 import BeautifulSoup
 import matplotlib.pyplot as plt
 import numpy as np
 import PIL.Image
@@ -8,21 +7,47 @@ from collections import Counter
 import os
 # import pandas as pd
 import plotly.graph_objects as go
+# from datetime import datetime, timedelta
 
+# def generate_date_range(num_pages):
+#     end_date = datetime.now()
+#     start_date = end_date - timedelta(days=3650)  # 10 años hacia atrás
 
-def get_wikipedia_page(search_query):
-    base_url = "https://en.wikipedia.org/w/index.php"
-    params = {"search": search_query, "title": "Special:Search", "go": "Go", "ns0": 1}
+#     date_range = np.linspace(start_date.timestamp(), end_date.timestamp(), num_pages).astype(int)
+#     date_range = [datetime.utcfromtimestamp(ts).strftime("%Y-%m-%d") for ts in date_range]
 
-    response = requests.get(base_url, params=params)
-    return response.text
+#     return date_range
 
+def words_google_search(search_query, api_key, cx, start_page=1, num_pages=30):
+    snippets = []
+    for page in range(start_page, start_page + num_pages):
+        start_index = (page - 1) * 10 + 1
+        url = f"https://www.googleapis.com/customsearch/v1"
+        params = {
+            "q": search_query,
+            "key": api_key,
+            "cx": cx,
+            # "searchType" : "image",
+            # "fileType" : "pdf",
+            "lr": "lang_en",
+            # "gl" : "us",
+            # "dateRestrict": "2021-01-01:2021-12-31",
+            "start": start_index,
+        }
 
-def extract_text_from_page(page_content):
-    soup = BeautifulSoup(page_content, "html.parser")
-    paragraphs = soup.find_all("p")
-    text = " ".join([p.get_text() for p in paragraphs])
-    return text
+        try:
+            response = requests.get(url, params=params)
+            data = response.json()
+
+            if "items" in data:
+                snippets.extend([item.get("snippet", "") for item in data["items"]])
+
+        except Exception as e:
+            print(f"Error: {e}")
+
+    # Combina los snippets en un solo texto
+    combined_text = " ".join(snippets)
+    return combined_text
 
 
 def generate_wordcloud(text):
@@ -82,6 +107,10 @@ def generate_wordcloud(text):
                 "one",
                 "later",
                 "two",
+                "refer",
+                "use",
+                "due",
+                "ago",
             ]
         ),
         mask=flag_mask,
@@ -98,7 +127,7 @@ def generate_wordcloud(text):
     plt.imshow(wc, interpolation="bilinear")
     plt.axis("off")
 
-    plt.savefig("./Images/WordsonaWikipediapage.png", dpi=300, bbox_inches="tight")
+    plt.savefig("./Images/WordsonmultiGooglesearch.png", dpi=300, bbox_inches="tight")
 
     plt.show()
 
@@ -132,7 +161,7 @@ def generate_bar_chart(word_counter):
     figbar.update_layout(
         xaxis_title="Words",
         yaxis_title="Count",
-        title='<b style="font-size:16px;">Top 20 words related to Anarchy</b><br><span style="font-size:12px;">on a Wikipedia page</span>',
+        title='<b style="font-size:16px;">Top 20 words related to Anarchy</b><br><span style="font-size:12px;">on multi Google search</span>',
         template="plotly_dark",  # Utiliza el tema oscuro que hemos estado utilizando
         font_family="Montserrat",  # Utiliza la fuente que hemos estado utilizando
     )
@@ -158,35 +187,37 @@ def generate_bar_chart(word_counter):
 
     # Save the interactive HTML chart
     # Uncomment the following line to save the interactive HTML chart:
-    figbar.write_html("./HTMLs/WordsonaWikipediapage.html")
+    figbar.write_html("./HTMLs/WordsonmultiGooglesearch.html")
 
     # Add Montserrat font style to the generated HTML
     # Read the content of the generated HTML file with UTF-8 encoding
-    with open("./HTMLs/WordsonaWikipediapage.html", "r", encoding="utf-8") as file:
+    with open("./HTMLs/WordsonmultiGooglesearch.html", "r", encoding="utf-8") as file:
         content = file.read()
 
     # Insert the styles in the head of the HTML file
     content = content.replace("</head>", styles + "</head>")
 
     # Escribir el contenido modificado de nuevo al archivo HTML
-    with open("./HTMLs/WordsonaWikipediapage.html", "w", encoding="utf-8") as file:
+    with open("./HTMLs/WordsonmultiGooglesearch.html", "w", encoding="utf-8") as file:
         file.write(content)
 
-
 def main():
+    # Reemplaza "api_key" y "cx" con tus propias credenciales
+    api_key = open("API_KEY").read()
+    cx = open("SEARCH_ENGINE_ID").read()
     search_query = "Anarchy"
     # Verificar si el archivo ya existe
     # OJO: SI EL SEARCH_QUERY ES CAMBIADO, DEBE ELIMINAR EL ARCHIVO ANTERIOR
-    if os.path.exists("Wiki01_text.txt"):
-        with open("Wiki01_text.txt", "r", encoding="utf-8") as file:
+    if os.path.exists("Google02_text.txt"):
+        with open("Google02_text.txt", "r", encoding="utf-8") as file:
             text = file.read()
     else:
         # Realizar scraping si el archivo no existe
-        page_content = get_wikipedia_page(search_query)
-        text = extract_text_from_page(page_content)
+        # Realiza la búsqueda y obtén los snippets de los resultados
+        text = words_google_search(search_query, api_key, cx, num_pages=50)
 
         # Guardar el contenido en un archivo de texto
-        with open("Wiki01_text.txt", "w", encoding="utf-8") as file:
+        with open("Google02_text.txt", "w", encoding="utf-8") as file:
             file.write(text)
 
     # Plot Word Cloud and return frequency words to bar plot

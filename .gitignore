@@ -1,5 +1,19 @@
 venv
 
-ScrapingGoogle/API_KEY
+ScrapingKnowledge/API_KEY
 
-ScrapingGoogle/SEARCH_ENGINE_ID
+ScrapingKnowledge/SEARCH_ENGINE_ID
+
+ML_AnimeRecommendationDatabase2023/AnimeDataset2023
+
+ML_AnimeRecognition/Full_AnimeDataset
+
+ML_AnimeRecognition/Select_AnimeDataset
+
+ML_TheSimpsonRecognition/TheSimpsonDataset
+
+ML_AnimeRecommendationDatabase2023
+
+ML_AnimeRecognition
+
+ML_TheSimpsonRecognition

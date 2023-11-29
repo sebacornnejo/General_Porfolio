@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <origin/>
+        <origin/>
+        <pubdate>20121108</pubdate>
+        <title>State and Province Boundaries with Large Lakes, 1:50 million (2012)</title>
+        <edition>2.0.0</edition>
+        <geoform>vector digital data</geoform>
+        <pubinfo>
+          <publish>North American Cartographic Information Society</publish>
+        </pubinfo>
+        <othercit>These data were downloaded from the Natural Earth website (http://www.naturalearthdata.com) on June 15, 2014. </othercit>
+        <onlink>http://purl.stanford.edu/ys524rx1284</onlink>
+        <lworkcit>
+          <citeinfo>
+            <origin/>
+            <origin/>
+            <pubdate>20121108</pubdate>
+            <title>Natural Earth</title>
+            <edition>2.0.0</edition>
+            <pubinfo>
+              <publish>North American Cartographic Information Society</publish>
+            </pubinfo>
+          </citeinfo>
+        </lworkcit>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>This polygon shapefile depicts internal, first-order administrative boundaries and polygons with large lakes for all but a few tiny countries. Includes name attributes (including diacritical marks), name variants, and some statistical codes (FIPS, ISO, HASC). For names that are uncertain, they are flagged as an attribute. Boundaries should perfectly match the following Natural Earth Vector themes: coastline, lake shoreline, admin-0 country boundary, river and lake centerlines. These data are represented at 1:50,000,000 scale. This layer is part of the Natural Earth Collection (v.2.0.0). </abstract>
+      <purpose>Natural Earth is a public domain map dataset available at 1:10, 1:50 and 1:110 million scales. Featuring tightly integrated vector and raster data, with Natural Earth you can make a variety of visually pleasing, well-crafted maps with cartography or GIS software.</purpose>
+    </descript>
+    <timeperd>
+      <timeinfo>
+        <sngdate>
+          <caldate>20121108</caldate>
+        </sngdate>
+      </timeinfo>
+      <current>publication date</current>
+    </timeperd>
+    <status>
+      <progress>Complete</progress>
+    </status>
+    <spdom>
+      <bounding>
+        <westbc>-178.194518</westbc>
+        <eastbc>153.616961</eastbc>
+        <northbc>83.116114</northbc>
+        <southbc>-43.619459</southbc>
+      </bounding>
+    </spdom>
+    <keywords>
+      <theme>
+        <themekt>lcsh</themekt>
+        <themekey>Provinces</themekey>
+        <themekey>States</themekey>
+      </theme>
+      <theme>
+        <themekt>ISO 19115 Topic Categories</themekt>
+        <themekey>boundaries</themekey>
+      </theme>
+      <place>
+        <placekt>geonames</placekt>
+        <placekey>Australia</placekey>
+        <placekey>Brazil</placekey>
+        <placekey>Canada</placekey>
+        <placekey>United States</placekey>
+      </place>
+      <temporal>
+        <tempkt>None</tempkt>
+        <tempkey>2012</tempkey>
+      </temporal>
+    </keywords>
+    <accconst>None</accconst>
+    <useconst>All versions of Natural Earth raster + vector map data found on this website are in the public domain. You may use the maps in any manner, including modifying the content and design, electronic dissemination, and offset printing. The primary authors, Tom Patterson and Nathaniel Vaughn Kelso, and all other contributors renounce all financial claim to the maps and invites you to use them for personal, educational, and commercial purposes.
+No permission is needed to use Natural Earth. Crediting the authors is unnecessary.</useconst>
+    <ptcontac>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>Natural Earth</cntorg>
+          <cntper>Nathaniel Vaughn Kelso</cntper>
+        </cntorgp>
+        <cntpos>Project manager</cntpos>
+        <cntemail>nathaniel@naturalearthdata.com</cntemail>
+      </cntinfo>
+    </ptcontac>
+    <datacred>Kelso, N.V. and Patterson, T. (2012). State and Province Boundaries with Large Lakes, 1:50 million (2012). Made with Natural Earth, online at http://www.naturalearthdata.com.</datacred>
+    <native>Microsoft Windows 7 Version 6.1 (Build 7601) Service Pack 1; Esri ArcGIS 10.2.2.3552</native>
+  </idinfo>
+  <spdoinfo>
+    <direct>Vector</direct>
+    <ptvctinf>
+      <sdtsterm>
+        <sdtstype>GT-polygon composed of chains</sdtstype>
+        <ptvctcnt>100</ptvctcnt>
+      </sdtsterm>
+    </ptvctinf>
+  </spdoinfo>
+  <eainfo>
+    <detailed>
+      <enttyp>
+        <enttypl>ne_50m_admin_1_states_provinces_lakes_shp</enttypl>
+      </enttyp>
+      <attr>
+        <attrlabl>FID</attrlabl>
+        <attrdef>Internal feature number.</attrdef>
+        <attrdefs>Esri</attrdefs>
+        <attrdomv>
+          <udom>Sequential unique whole numbers that are automatically generated.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Shape</attrlabl>
+        <attrdef>Feature geometry.</attrdef>
+        <attrdefs>Esri</attrdefs>
+        <attrdomv>
+          <udom>Coordinates defining the features.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>featurecla</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>scalerank</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>adm1_code</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>diss_me</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>adm1_cod_1</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>iso_3166_2</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>wikipedia</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>sr_sov_a3</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>sr_adm0_a3</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>iso_a2</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>adm0_sr</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>admin0_lab</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>name</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>name_alt</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>name_local</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>type</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>type_en</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>code_local</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>code_hasc</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>note</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>hasc_maybe</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>region</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>region_cod</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>region_big</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>big_code</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>provnum_ne</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>gadm_level</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>check_me</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>scaleran_1</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>datarank</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>abbrev</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>postal</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>area_sqkm</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>sameascity</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>labelrank</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>featurec_1</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>admin</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>name_len</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>mapcolor9</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>mapcolor13</attrlabl>
+      </attr>
+    </detailed>
+  </eainfo>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>Stanford Geospatial Center</cntorg>
+        </cntorgp>
+        <cntaddr>
+          <addrtype>physical</addrtype>
+          <address>Branner Earth Sciences Library</address>
+          <address>Mitchell Building, 2nd Floor</address>
+          <address>397 Panama Mall</address>
+          <city>Stanford</city>
+          <state>California</state>
+          <postal>94305</postal>
+        </cntaddr>
+        <cntvoice>650-723-2746</cntvoice>
+        <cntemail>brannerlibrary@stanford.edu</cntemail>
+      </cntinfo>
+    </distrib>
+    <distliab>All versions of Natural Earth raster + vector map data found on this website are in the public domain. You may use the maps in any manner, including modifying the content and design, electronic dissemination, and offset printing. The primary authors, Tom Patterson and Nathaniel Vaughn Kelso, and all other contributors renounce all financial claim to the maps and invites you to use them for personal, educational, and commercial purposes.
+No permission is needed to use Natural Earth. Crediting the authors is unnecessary.</distliab>
+  </distinfo>
+  <metainfo>
+    <metd>20150609</metd>
+    <metc>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>Stanford Geospatial Center</cntorg>
+        </cntorgp>
+        <cntaddr>
+          <addrtype>mailing and physical</addrtype>
+          <address>Mitchell Bldg. 2nd floor</address>
+          <address>397 Panama Mall</address>
+          <city>Stanford</city>
+          <state>California</state>
+          <postal>94305</postal>
+          <country>US</country>
+        </cntaddr>
+        <cntvoice>650-723-2746</cntvoice>
+        <cntemail>brannerlibrary@stanford.edu</cntemail>
+      </cntinfo>
+    </metc>
+    <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+    <metstdv>FGDC-STD-001-1998</metstdv>
+    <mettc>local time</mettc>
+  </metainfo>
+</metadata>

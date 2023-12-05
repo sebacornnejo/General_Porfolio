@@ -24,6 +24,10 @@ An analysis of NBA players, including individual player insights, top players, t
 
 Developed machine learning models for predicting water quality based on an extended dataset. The project includes data sampling, visualizations, implementation of Decision Trees and K-Nearest Neighbors models, and model evaluation metrics.
 
+### 6. [A Simple KMeans Marketing Segmentation](./SimpleKMeans_Marketing/README.md)
+
+Developed machine learning models for explore customer segmentation using data from a mall. The goal is to understand customer behavior, identify distinct customer segments, and derive insights for targeted marketing strategies.
+
 ## How to Use
 
 1. Clone the repository: `git clone https://github.com/sebacornnejo/General_Porfolio.git`

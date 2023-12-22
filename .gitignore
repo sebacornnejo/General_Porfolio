@@ -10,10 +10,16 @@ ML_AnimeRecognition/Full_AnimeDataset
 
 ML_AnimeRecognition/Select_AnimeDataset
 
-ML_TheSimpsonRecognition/TheSimpsonDataset
+CNN_TheSimpsonRecognition(InProgress)/Simpsons-Face-Detector
+
+CNN_TheSimpsonRecognition(InProgress)/TheSimpsonsDataset
+
+CNN_TheSimpsonRecognition(InProgress)/TheSimpsonsFacesDataset
 
 ML_AnimeRecommendationDatabase2023
 
 ML_AnimeRecognition
 
 ML_TheSimpsonRecognition
+
+.vscode

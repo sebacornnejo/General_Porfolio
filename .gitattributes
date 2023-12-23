@@ -1,0 +1,2 @@
+CNN_TheSimpsonsRecognition(InProgress)/ML_TheSimpsonsClassificationFull.ipynb filter=lfs diff=lfs merge=lfs -text
+CNN_TheSimpsonsRecognition(InProgress)/TheSimpsons_CharacterClassification.keras filter=lfs diff=lfs merge=lfs -text
